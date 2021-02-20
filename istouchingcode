@@ -1,0 +1,30 @@
+var still, fast
+
+function setup() {
+  createCanvas(800,400);
+  still=createSprite(400, 200, 50, 50);
+  fast=createSprite(400,200,50,50)
+}
+
+function draw() {
+  background(0);  
+  
+fast.x=mouseX
+fast.y=mouseY  
+  
+console.log(fast.x - still.x)
+
+if(fast.x - still.x < still.width/2 + fast.width/2 &&
+ still.x - fast.x < still.width/2 + fast.width/2 &&
+ fast.y - still.y < still.height/2 + fast.height/2 &&
+ still.y - fast.y < still.height/2 + fast.height/2
+  ){
+  still.shapeColor="green" 
+  fast.shapeColor="blue"
+}
+else{
+  still.shapeColor="purple" 
+  fast.shapeColor="red"
+}
+  drawSprites();
+}

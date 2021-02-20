@@ -1,0 +1,67 @@
+var still, fast, anything, something
+
+function setup() {
+  createCanvas(800,400);
+  still=createSprite(400, 200, 50, 50);
+  fast=createSprite(400,200,50,50)
+anything=createSprite(200,200,50,50)
+something=createSprite(200,50,60,60)
+}
+
+function draw() {
+  background(0);  
+  
+fast.x=mouseX
+fast.y=mouseY  
+  
+
+console.log(fast.x - still.x)
+
+if(isTouching(fast, anything)){
+
+  anything.shapeColor="green" 
+     fast.shapeColor="blue"
+}
+else if(isTouching(fast, something)){
+something.shapeColor="brown"  
+fast.shapeColor="blue"
+}
+else if(isTouching(fast, still)){
+still.shapeColor="yellow"
+fast.shapeColor="blue"
+}
+else{
+
+  anything.shapeColor="purple" 
+     fast.shapeColor="purple"
+     something.shapeColor="purple" 
+     still.shapeColor="purple"
+}
+
+  drawSprites();
+}
+// if(true){} --> if will get excuted
+
+/*if(false){
+....
+}
+else{
+....
+}
+--> else wil get executed
+*/
+function isTouching(object1, object2){
+  
+  if(object1.x - object2.x < object2.width/2 + object1.width/2 &&
+    object2.x - object1.x < object2.width/2 + object1.width/2 &&
+    object1.y - object2.y < object2.height/2 + object1.height/2 &&
+    object2.y - object1.y < object2.height/2 + object1.height/2
+     ){
+     
+      return true
+   }
+   else{
+     
+    return false
+   }
+}
